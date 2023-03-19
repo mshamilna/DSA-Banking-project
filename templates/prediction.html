@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediciton Modal</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+ 
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });ddEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="form-container sign-in-container">
+        <div class="prediction">
+            
+        <h1 class="title">{{prediction_text}}</h1>
+        </div>
+        
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+             
+            <div class="overlay-panel overlay-right">
+                <h1>Bank Telemarketing Analysis</h1>
+                <p>In this project we aim to predict the term deposit subscription possibilities of bank customers based on the tele marketing response provided by the bank. We also try  to find out the different factors which affect the term deposit opening of customers. This  is a classification problem and we aim to try the different machine learning models on classification like Logistic Regression, SVM, Decision Tree Random Forest and kNN and find the best suitable model which gives the most accurate prediction for our classification problem - predicting term deposit subscription. </p>
+                
+                <button class="ghost" id="signUp"><a href="{{url_for('home')}}">Home</a></button>
+                <div class="credits">
+                    <p>Adeeba Farha Khalid</p>
+                    <p>Johnly K Babu</p>
+                    <p>Muhammed Shamil N A</p>
+                    <p>Sayuj S</p>
+                    <p>Sreeraj I N</p>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

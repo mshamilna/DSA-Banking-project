@@ -73,14 +73,15 @@ button.ghost {
 }
 
 form {
-	background-color: #ffffffed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
+    /* background-color: #ffffffed; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+    overflow: scroll;
 }
 
 input, select {
@@ -117,8 +118,8 @@ input, select {
     background-image: url(/static/images/banking.jpg);
     background-size: cover;
     background-position: top;
-    /* background-color: rgba(255,255,255,0.9); */
-    /* background-blend-mode: saturation; */
+    background-color: rgba(255,255,255,0.9);
+    background-blend-mode: saturation;
 }
 
 .container.right-panel-active .sign-in-container {
@@ -294,7 +295,7 @@ select {
 h1.title {
     font-weight: bold;
     margin: 0.5em 1em; 
-    color: #042932;
+    color: #005d73;
 }
 span.sub-title {
     font-size: 1.3em;
@@ -314,4 +315,15 @@ span.sub-title {
 #prediction-result {
     background-color: transparent;
     border-color: #FFFFFF;
+}
+.prediction {
+    display: flex;
+    /* width: 100%; */
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    margin: 4em;
+}
+button.ghost > a {
+    color: inherit;
 }

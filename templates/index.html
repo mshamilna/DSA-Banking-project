@@ -28,83 +28,95 @@
 </head>
 <body>
     
-    <div class="form-container sign-in-container" >
-        <form action="#">
-            <h1 class="title">Please provide feature values</h1>
-            <form action="{{url for prediction}}" method="post" id="form">
-                <input type="number" name="feature_age" id="feature_age" placeholder="Age"> 
-                <div class="radio_div">
-                    <span for="html">Loan</span>
-                    <input type="radio" id="ft_loan_yes" name="feature_loan" value=1>
-                    <label for="ft_loan_yes">Yes</label>
-                    <input type="radio" id="ft_loan_no" name="feature_loan" value=0>
-                    <label for="ft_loan_no">No</label>
-                </div>
-                <div class="radio_div">
-                    <span for="html">Housing Loan</span>
-                    <input type="radio" id="ft_housing_yes" name="feature_housing" value=1>
-                    <label for="ft_housing_yes">Yes</label>
-                    <input type="radio" id="ft_housing_no" name="feature_housing" value=0>
-                    <label for="ft_housing_no">No</label>
-                </div>
-                <div class="radio_div">
-                    <span for="html">Default</span>
-                    <input type="radio" id="ft_default_yes" name="feature_default" value=1>
-                    <label for="ft_default_yes">Yes</label>
-                    <input type="radio" id="ft_default_no" name="feature_default" value=0>
-                    <label for="ft_default_no">No</label>
-                </div>
-                <select id="feature_job" placeholder-text="Job">
-                    <option value="">Job</option>
-                    <option value="1" class="select-dropdown__list-item">Management</option>
-                    <option value="2" class="select-dropdown__list-item">Technician</option>
-                    <option value="3" class="select-dropdown__list-item">Entrepreneur</option>
-                    <option value="4" class="select-dropdown__list-item">Blue-collar</option>
-                    <option value="5" class="select-dropdown__list-item">Retired</option>
-                    <option value="6" class="select-dropdown__list-item">Admin</option>
-                    <option value="7" class="select-dropdown__list-item">Services</option>
-                    <option value="8" class="select-dropdown__list-item">Self-employed</option>
-                    <option value="9" class="select-dropdown__list-item">Unemployed</option>
-                    <option value="10" class="select-dropdown__list-item">Housemaid</option>
-                    <option value="11" class="select-dropdown__list-item">Student</option>
-                    <option value="-1" class="select-dropdown__list-item">Unknown</option>
-                </select> 
-                <select id="feature_education" placeholder-text="Education">
-                    <option value="">Education</option>
-                    <option value="1" class="select-dropdown__list-item">Tertiary</option>
-                    <option value="2" class="select-dropdown__list-item">Secondary</option>
-                    <option value="3" class="select-dropdown__list-item">Primary</option>
-                    <option value="-1" class="select-dropdown__list-item">Unknown</option>
-                </select> 
-                <select id="feature_contact" placeholder-text="Contact">
-                    <option value="">Contact</option>
-                    <option value="1" class="select-dropdown__list-item">Cellular</option>
-                    <option value="2" class="select-dropdown__list-item">Telephone</option>
-                    <option value="-1" class="select-dropdown__list-item">Other</option>
-                </select> 
-                <select id="feature_marital" placeholder-text="Marital">
-                    <option value="">Marital</option>
-                    <option value="0" class="select-dropdown__list-item">Married</option>
-                    <option value="1" class="select-dropdown__list-item">Single</option>
-                    <option value="2" class="select-dropdown__list-item">Divorced</option>
-                </select> 
-                <select id="feature_month" placeholder-text="Month">
-                    <option value="">Month</option>
-                    <option value="1" class="select-dropdown__list-item">January</option>
-                    <option value="2" class="select-dropdown__list-item">February</option>
-                    <option value="3" class="select-dropdown__list-item">March</option>
-                    <option value="4" class="select-dropdown__list-item">April</option>
-                    <option value="5" class="select-dropdown__list-item">May</option>
-                    <option value="6" class="select-dropdown__list-item">June</option>
-                    <option value="7" class="select-dropdown__list-item">July</option>
-                    <option value="8" class="select-dropdown__list-item">August</option>
-                    <option value="9" class="select-dropdown__list-item">Septemper</option>
-                    <option value="10" class="select-dropdown__list-item">October</option>
-                    <option value="11" class="select-dropdown__list-item">November</option>
-                    <option value="12" class="select-dropdown__list-item">December</option>
-                </select> 
-                <button id="form-submit" type="submit">Predict</button>
-            </form>
+    <div class="form-container sign-in-container">
+        <h1 class="title">Please provide feature values</h1>
+        <form action="{{url_for('predict')}}" method="post" id="form">
+            <input type="number" name="feature_age" id="feature_age" placeholder="Age">
+            <select id="feature_job" name="feature_job" placeholder-text="Job">
+                <option value="0">Job</option>
+                <option value="1" class="select-dropdown__list-item">Management</option>
+                <option value="2" class="select-dropdown__list-item">Technician</option>
+                <option value="3" class="select-dropdown__list-item">Entrepreneur</option>
+                <option value="4" class="select-dropdown__list-item">Blue-collar</option>
+                <option value="5" class="select-dropdown__list-item">Retired</option>
+                <option value="6" class="select-dropdown__list-item">Admin</option>
+                <option value="7" class="select-dropdown__list-item">Services</option>
+                <option value="8" class="select-dropdown__list-item">Self-employed</option>
+                <option value="9" class="select-dropdown__list-item">Unemployed</option>
+                <option value="10" class="select-dropdown__list-item">Housemaid</option>
+                <option value="11" class="select-dropdown__list-item">Student</option>
+                <option value="-1" class="select-dropdown__list-item">Unknown</option>
+            </select>
+            <select id="feature_marital" name="feature_marital" placeholder-text="Marital">
+                <option value="-1">Marital</option>
+                <option value="0" class="select-dropdown__list-item">Married</option>
+                <option value="1" class="select-dropdown__list-item">Single</option>
+                <option value="2" class="select-dropdown__list-item">Divorced</option>
+            </select>
+            <select id="feature_education" name="feature_education" placeholder-text="Education">
+                <option value="">Education</option>
+                <option value="1" class="select-dropdown__list-item">Tertiary</option>
+                <option value="2" class="select-dropdown__list-item">Secondary</option>
+                <option value="3" class="select-dropdown__list-item">Primary</option>
+                <option value="-1" class="select-dropdown__list-item">Unknown</option>
+            </select>
+            <div class="radio_div">
+                <span for="html">Default</span>
+                <input type="radio" id="ft_default_yes" name="feature_default" value=1>
+                <label for="ft_default_yes">Yes</label>
+                <input type="radio" id="ft_default_no" name="feature_default" value=0 checked>
+                <label for="ft_default_no">No</label>
+            </div>
+            <input type="number" name="feature_balance" id="feature_balance" placeholder="Balance">
+            <div class="radio_div">
+                <span for="html">Housing Loan</span>
+                <input type="radio" id="ft_housing_yes" name="feature_housing" value=1>
+                <label for="ft_housing_yes">Yes</label>
+                <input type="radio" id="ft_housing_no" name="feature_housing" value=0 checked>
+                <label for="ft_housing_no">No</label>
+            </div>
+            <div class="radio_div">
+                <span for="html">Loan</span>
+                <input type="radio" id="ft_loan_yes" name="feature_loan" value=1>
+                <label for="ft_loan_yes">Yes</label>
+                <input type="radio" id="ft_loan_no" name="feature_loan" value=0 checked>
+                <label for="ft_loan_no">No</label>
+            </div>
+            <select id="feature_contact" name="feature_contact" placeholder-text="Contact">
+                <option value="-1">Contact</option>
+                <option value="1" class="select-dropdown__list-item">Cellular</option>
+                <option value="2" class="select-dropdown__list-item">Telephone</option>
+                <option value="-1" class="select-dropdown__list-item">Other</option>
+            </select>
+            <input type="number" name="feature_day" id="feature_day" placeholder="Day">
+            <select id="feature_month" name="feature_month" placeholder-text="Month">
+                <option value="">Month</option>
+                <option value="1" class="select-dropdown__list-item">January</option>
+                <option value="2" class="select-dropdown__list-item">February</option>
+                <option value="3" class="select-dropdown__list-item">March</option>
+                <option value="4" class="select-dropdown__list-item">April</option>
+                <option value="5" class="select-dropdown__list-item">May</option>
+                <option value="6" class="select-dropdown__list-item">June</option>
+                <option value="7" class="select-dropdown__list-item">July</option>
+                <option value="8" class="select-dropdown__list-item">August</option>
+                <option value="9" class="select-dropdown__list-item">Septemper</option>
+                <option value="10" class="select-dropdown__list-item">October</option>
+                <option value="11" class="select-dropdown__list-item">November</option>
+                <option value="12" class="select-dropdown__list-item">December</option>
+            </select>
+            <input type="number" name="feature_duration" id="feature_duration" placeholder="Duration">
+            <input type="number" name="feature_campaign" id="feature_campaign" placeholder="Campaign">
+            <input type="number" name="feature_pdays" id="feature_pdays" placeholder="Pdays">
+            <input type="number" name="feature_previous" id="feature_previous" placeholder="Previous">
+    
+            <select id="feature_poutcome" name="feature_poutcome" placeholder-text="Poutcome">
+                <option value="-1">Contact</option>
+                <option value="3" class="select-dropdown__list-item">Success</option>
+                <option value="1" class="select-dropdown__list-item">Failure</option>
+                <option value="2" class="select-dropdown__list-item">Other</option>
+            </select>
+    
+            <button id="form-submit" type="submit">Predict</button>
         </form>
     </div>
     <div class="overlay-container">
