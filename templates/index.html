@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediciton Modal</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+ 
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });ddEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="form-container sign-in-container" >
+        <form action="#">
+            <h1 class="title">Please provide feature values</h1>
+            <form action="{{url for prediction}}" method="post" id="form">
+                <input type="number" name="feature_age" id="feature_age" placeholder="Age"> 
+                <div class="radio_div">
+                    <span for="html">Loan</span>
+                    <input type="radio" id="ft_loan_yes" name="feature_loan" value=1>
+                    <label for="ft_loan_yes">Yes</label>
+                    <input type="radio" id="ft_loan_no" name="feature_loan" value=0>
+                    <label for="ft_loan_no">No</label>
+                </div>
+                <div class="radio_div">
+                    <span for="html">Housing Loan</span>
+                    <input type="radio" id="ft_housing_yes" name="feature_housing" value=1>
+                    <label for="ft_housing_yes">Yes</label>
+                    <input type="radio" id="ft_housing_no" name="feature_housing" value=0>
+                    <label for="ft_housing_no">No</label>
+                </div>
+                <div class="radio_div">
+                    <span for="html">Default</span>
+                    <input type="radio" id="ft_default_yes" name="feature_default" value=1>
+                    <label for="ft_default_yes">Yes</label>
+                    <input type="radio" id="ft_default_no" name="feature_default" value=0>
+                    <label for="ft_default_no">No</label>
+                </div>
+                <select id="feature_job" placeholder-text="Job">
+                    <option value="">Job</option>
+                    <option value="1" class="select-dropdown__list-item">Management</option>
+                    <option value="2" class="select-dropdown__list-item">Technician</option>
+                    <option value="3" class="select-dropdown__list-item">Entrepreneur</option>
+                    <option value="4" class="select-dropdown__list-item">Blue-collar</option>
+                    <option value="5" class="select-dropdown__list-item">Retired</option>
+                    <option value="6" class="select-dropdown__list-item">Admin</option>
+                    <option value="7" class="select-dropdown__list-item">Services</option>
+                    <option value="8" class="select-dropdown__list-item">Self-employed</option>
+                    <option value="9" class="select-dropdown__list-item">Unemployed</option>
+                    <option value="10" class="select-dropdown__list-item">Housemaid</option>
+                    <option value="11" class="select-dropdown__list-item">Student</option>
+                    <option value="-1" class="select-dropdown__list-item">Unknown</option>
+                </select> 
+                <select id="feature_education" placeholder-text="Education">
+                    <option value="">Education</option>
+                    <option value="1" class="select-dropdown__list-item">Tertiary</option>
+                    <option value="2" class="select-dropdown__list-item">Secondary</option>
+                    <option value="3" class="select-dropdown__list-item">Primary</option>
+                    <option value="-1" class="select-dropdown__list-item">Unknown</option>
+                </select> 
+                <select id="feature_contact" placeholder-text="Contact">
+                    <option value="">Contact</option>
+                    <option value="1" class="select-dropdown__list-item">Cellular</option>
+                    <option value="2" class="select-dropdown__list-item">Telephone</option>
+                    <option value="-1" class="select-dropdown__list-item">Other</option>
+                </select> 
+                <select id="feature_marital" placeholder-text="Marital">
+                    <option value="">Marital</option>
+                    <option value="0" class="select-dropdown__list-item">Married</option>
+                    <option value="1" class="select-dropdown__list-item">Single</option>
+                    <option value="2" class="select-dropdown__list-item">Divorced</option>
+                </select> 
+                <select id="feature_month" placeholder-text="Month">
+                    <option value="">Month</option>
+                    <option value="1" class="select-dropdown__list-item">January</option>
+                    <option value="2" class="select-dropdown__list-item">February</option>
+                    <option value="3" class="select-dropdown__list-item">March</option>
+                    <option value="4" class="select-dropdown__list-item">April</option>
+                    <option value="5" class="select-dropdown__list-item">May</option>
+                    <option value="6" class="select-dropdown__list-item">June</option>
+                    <option value="7" class="select-dropdown__list-item">July</option>
+                    <option value="8" class="select-dropdown__list-item">August</option>
+                    <option value="9" class="select-dropdown__list-item">Septemper</option>
+                    <option value="10" class="select-dropdown__list-item">October</option>
+                    <option value="11" class="select-dropdown__list-item">November</option>
+                    <option value="12" class="select-dropdown__list-item">December</option>
+                </select> 
+                <button id="form-submit" type="submit">Predict</button>
+            </form>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+             
+            <div class="overlay-panel overlay-right">
+                <h1>Bank Telemarketing Analysis</h1>
+                <p>In this project we aim to predict the term deposit subscription possibilities of bank customers based on the tele marketing response provided by the bank. We also try  to find out the different factors which affect the term deposit opening of customers. This  is a classification problem and we aim to try the different machine learning models on classification like Logistic Regression, SVM, Decision Tree Random Forest and kNN and find the best suitable model which gives the most accurate prediction for our classification problem - predicting term deposit subscription. </p>
+                <div id="prediction-result"></div>
+                <button class="ghost" id="signUp">Fill form to the left</button>
+                <div class="credits">
+                    <p>Adeeba Farha Khalid</p>
+                    <p>Johnly K Babu</p>
+                    <p>Muhammed Shamil N A</p>
+                    <p>Sayuj S</p>
+                    <p>Sreeraj I N</p>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
